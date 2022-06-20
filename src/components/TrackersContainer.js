@@ -19,7 +19,7 @@ export function TrackersContainer() {
         <Tracker
           key={t.id}
           tracker={t}
-          onRemove={onTrackerRemove(t.id)}
+          onRemove={onTrackerRemove}
           onEdit={onTrackerEdit}
         />
       ))}
