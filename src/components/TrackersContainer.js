@@ -1,10 +1,10 @@
 import { useRecoilValue } from 'recoil'
-import { trackersState } from '../state/trackers/atoms'
 import { useCreateTracker } from '../state/trackers/actions/useCreateTracker'
-import { TrackerCreator } from './TrackerCreator'
-import { Tracker } from './Tracker'
-import { useTrackerRemove } from '../state/trackers/actions/useTrackerRemove'
 import { useTrackerEdit } from '../state/trackers/actions/useTrackerEdit'
+import { useTrackerRemove } from '../state/trackers/actions/useTrackerRemove'
+import { trackersState } from './../state/trackers/atoms'
+import { Tracker } from './Tracker'
+import { TrackerCreator } from './TrackerCreator'
 
 export function TrackersContainer() {
   const trackers = useRecoilValue(trackersState)

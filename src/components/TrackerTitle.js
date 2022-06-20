@@ -1,4 +1,5 @@
 import React from 'react'
+import { useInputChange } from '../hooks/useInputChange'
 import { useOnEnterEscape } from '../hooks/useOnEnterEscape'
 
 export function TrackerTitle({ title, editing, setEditing, onEdit }) {
@@ -19,39 +20,43 @@ export function TrackerTitle({ title, editing, setEditing, onEdit }) {
     }, 0)
   }
 
+  const onInputChange = useInputChange(setEditingTitle)
+
   const onEnter = () => {
     onEdit(editingTitle)
     setEditing(false)
     inputRef.current.blur()
   }
 
-  const onEscape = () => {
+  const onEscape = () => setEditing(false)
+
+  const handleKeyDown = useOnEnterEscape(onEnter, onEscape)
+
+  const onBlur = () => {
     setEditing(false)
     setEditingTitle(title)
   }
 
-  const handleKeyDown = useOnEnterEscape(onEnter, onEscape)
-
   return editing ? (
     <input
+      className="px-2 py-1 rounded border"
+      maxLength={50}
       ref={inputRef}
       value={editingTitle}
-      onChange={(e) => setEditingTitle(e.target.value)}
-      onBlur={() => setEditing(false)}
+      onChange={onInputChange}
+      onBlur={onBlur}
       onKeyDown={handleKeyDown}
     />
   ) : (
     <p
-      className="duration-100 font-semibold cursor-pointer px-2 py-1 rounded border border-white hover:border-gray-200"
+      className="editable-title"
       onClick={startEditing}
       onMouseEnter={() => setIsTitleHovered(true)}
       onMouseLeave={() => setIsTitleHovered(false)}
     >
       {title}
       <span
-        className={`duration-100 font-thin text-gray-400 ${
-          isTitleHovered ? 'opacity-100' : 'opacity-0'
-        }`}
+        className={`edit-text ${isTitleHovered ? 'opacity-100' : 'opacity-0'}`}
       >
         {' '}
         [ edit ]

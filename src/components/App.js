@@ -5,7 +5,7 @@ function App() {
   return (
     <div className="bg-gray-100 h-screen">
       <RecoilRoot>
-        <div className="container mx-auto">
+        <div className="container mx-auto px-4 sm:px-0">
           <TrackersContainer />
         </div>
       </RecoilRoot>

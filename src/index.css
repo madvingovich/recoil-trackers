@@ -15,7 +15,7 @@ code {
 }
 
 .input {
-  @apply appearance-none relative block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm;
+  @apply appearance-none relative block px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 text-sm;
 }
 
 .btn {
@@ -23,5 +23,13 @@ code {
 }
 
 .link-btn {
-  @apply font-medium underline text-indigo-600 hover:text-indigo-500;
+  @apply font-medium underline text-indigo-600 hover:text-indigo-500 text-xs md:text-sm;
+}
+
+.editable-title {
+  @apply duration-100 font-semibold cursor-pointer px-2 py-1 rounded border border-white hover:border-gray-200 text-sm md:text-base;
+}
+
+.edit-text {
+  @apply duration-100 font-thin text-gray-400;
 }

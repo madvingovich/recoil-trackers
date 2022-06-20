@@ -1,4 +1,5 @@
 import React from 'react'
+import { useInputChange } from '../hooks/useInputChange'
 import { useOnEnterEscape } from '../hooks/useOnEnterEscape'
 
 export function TrackerCreator({ onCreate, className = '' }) {
@@ -10,6 +11,7 @@ export function TrackerCreator({ onCreate, className = '' }) {
   }
 
   const handleKeyDown = useOnEnterEscape(handleCreate)
+  const handleTitleChange = useInputChange(setTitle)
 
   return (
     <div className={`flex justify-center ${className}`}>
@@ -17,7 +19,7 @@ export function TrackerCreator({ onCreate, className = '' }) {
         className="input mr-3"
         placeholder="Do Something..."
         value={title}
-        onChange={(e) => setTitle(e.target.value)}
+        onChange={handleTitleChange}
         onKeyDown={handleKeyDown}
       />
       <button className="btn" onClick={handleCreate}>
